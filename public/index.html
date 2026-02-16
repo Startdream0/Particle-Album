@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Particle Album | 全息粒子旅行相册</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="hud-grid"></div>
+    <div class="layout">
+      <aside class="panel glass">
+        <h1>全息粒子旅行相册</h1>
+        <p class="hint">把照片贴在地球上，用手势穿梭你的时间线。</p>
+
+        <form id="uploadForm" class="glass">
+          <input type="text" name="title" placeholder="照片标题" />
+          <input type="file" name="photo" accept="image/*" required />
+          <div class="row">
+            <input type="number" name="lat" step="0.000001" placeholder="纬度" required />
+            <input type="number" name="lon" step="0.000001" placeholder="经度" required />
+          </div>
+          <input type="datetime-local" name="time" required />
+          <textarea name="notes" placeholder="旅行故事 / 备注"></textarea>
+          <button type="submit">上传到地球</button>
+        </form>
+
+        <div class="gesture-guide glass">
+          <h3>摄像头手势</h3>
+          <ul>
+            <li>🤏 捏合：下一张</li>
+            <li>👉 向右挥手：时间前进</li>
+            <li>👈 向左挥手：时间后退</li>
+          </ul>
+          <button id="startCamera">启动手势识别</button>
+        </div>
+      </aside>
+
+      <main>
+        <section id="stage"></section>
+        <div id="statusText" class="status">等待上传第一张旅行照片…</div>
+        <article id="photoCard" class="photo-card glass hidden"></article>
+        <div class="scanline"></div>
+      </main>
+    </div>
+
+    <video id="webcam" playsinline class="hidden"></video>
+
+    <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script>
+    <script type="module" src="app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,134 @@
+:root {
+  color-scheme: dark;
+  font-family: "Segoe UI", "PingFang SC", sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  color: #e8f6ff;
+  background: radial-gradient(circle at 50% 35%, #103674 0%, #020615 45%, #01030a 100%);
+  overflow: hidden;
+}
+
+.hud-grid {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(87, 212, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(87, 212, 255, 0.08) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(circle at center, black 20%, transparent 85%);
+}
+
+.layout {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 330px 1fr;
+  min-height: 100vh;
+}
+
+.glass {
+  border: 1px solid rgba(104, 213, 255, 0.35);
+  background: rgba(6, 15, 38, 0.5);
+  backdrop-filter: blur(10px);
+  box-shadow: inset 0 0 25px rgba(87, 212, 255, 0.08), 0 0 30px rgba(4, 75, 143, 0.35);
+}
+
+.panel {
+  padding: 18px;
+  border-right: 1px solid rgba(104, 213, 255, 0.2);
+}
+
+.hint {
+  color: #b8eaff;
+  margin-bottom: 12px;
+}
+
+#uploadForm,
+.gesture-guide {
+  border-radius: 12px;
+  padding: 12px;
+  margin-bottom: 12px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+input,
+textarea,
+button {
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid rgba(104, 213, 255, 0.45);
+  background: rgba(7, 21, 47, 0.7);
+  color: #ebf7ff;
+  padding: 9px;
+  margin-top: 8px;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: linear-gradient(130deg, #18b6ff, #8d5dff);
+  font-weight: 700;
+}
+
+main {
+  position: relative;
+}
+
+#stage {
+  height: 100vh;
+}
+
+.status {
+  position: absolute;
+  left: 18px;
+  bottom: 20px;
+  padding: 8px 12px;
+  font-size: 13px;
+  border-radius: 999px;
+  border: 1px solid rgba(135, 225, 255, 0.35);
+  background: rgba(4, 14, 35, 0.65);
+  color: #bdefff;
+}
+
+.photo-card {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 300px;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.photo-card img {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+}
+
+.photo-card .meta { padding: 10px 12px; }
+.photo-card .meta p { margin: 7px 0; color: #c7ecff; }
+
+.scanline {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(transparent, rgba(126, 237, 255, 0.1), transparent);
+  animation: scan 7s linear infinite;
+}
+
+@keyframes scan {
+  from { transform: translateY(-100%); }
+  to { transform: translateY(100%); }
+}
+
+.hidden { display: none; }
